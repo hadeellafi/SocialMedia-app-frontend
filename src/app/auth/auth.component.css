@@ -1,0 +1,15 @@
+.title{font-family: 'Pacifico', cursive;
+    font-size: 4rem;
+    color: rgb(133, 36, 36);
+}
+input:active{
+    border-color: chocolate;
+}
+
+.eyeWidth
+{
+    width: fit-content
+}
+.danger{
+    color: rgb(133, 36, 36);
+}

@@ -1,0 +1,102 @@
+<div class="container">
+    <section class="vh-100">
+        <div class="container-fluid h-custom">
+            <div class="row d-flex justify-content-center align-items-center h-100">
+
+                <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
+                    <form (ngSubmit)="onSubmit(f)" #f="ngForm">
+                        <h3 class="mb-4 pb-2 pb-md-0 mb-md-5 text-center title">Recipes</h3>
+
+                        <div class="form-outline mb-4" *ngIf="signUpMood">
+                            <!-- <label class="form-label">Email</label> -->
+                            <input type="email" name="email" required email ngModel placeholder="Email"
+                            [style.borderColor]="takenUserName ? 'red' : ''"
+                                class="form-control form-control-lg">
+                            <div *ngIf="takenEmail" class="danger">
+                                {{ takenEmail }}
+                            </div>
+                        </div>
+
+
+                        <div class="form-outline mb-3" *ngIf="signUpMood">
+                            <!-- <label class="form-label">Password</label> -->
+                            <input required type="text" name="fullName" placeholder="Full Name" ngModel
+                                class="form-control form-control-lg">
+                        </div>
+                        <div class="form-outline mb-3">
+                            <!-- <label class="form-label">Password</label> -->
+                            <input required type="text" name="username" placeholder="UserName"
+                             ngModel [style.borderColor]="takenUserName ? 'red' : ''"
+                             class="form-control form-control-lg">
+
+                            <div *ngIf="takenUserName" class="danger">
+                                {{ takenUserName }}
+                            </div>
+                        </div>
+
+                        <div class="form-outline mb-1 d-flex flex-row">
+                            <!-- <label class="form-label">Password</label> -->
+
+                            <input required pattern="^(?=.*[0-9])(?=.*[^a-zA-Z0-9]).{6,}$" name="password"
+                                placeholder="Password" ngModel minlength="6" class="form-control form-control-lg"
+                                [type]="hide ? 'password' : 'text'">
+                            <span class="input-group-text eyeWidth"(click)="hide = !hide" style="cursor: pointer;">
+                                <i class="fa" [ngClass]="{'fa-eye-slash': hide, 'fa-eye': !hide}"
+                                    ></i>
+                            </span>
+                        </div>
+                        <div class="d-flex flex-column align-items-end">
+                            <i class="fa fa-question-circle " aria-hidden="true" (click)="showTooltip = !showTooltip"
+                                style="cursor: pointer;"></i>
+                        </div>
+                        <div *ngIf="showTooltip">
+                            Your password should contain:<br>
+                            <ul>
+                                <li>At least 6 characters.</li>
+                                <li> At least one digit ('0'-'9')</li>
+                                <li>At least one non alphanumeric character.</li>
+                            </ul>
+                        </div>
+                        <div *ngIf="errorMessage" class="text-center danger">{{errorMessage}}</div>
+
+
+
+
+
+                        <div class="text-center mt-4 pt-2">
+                            <div *ngIf="!isLoading">
+                                <button [disabled]="!f.valid" type="submit" class="btn  btn-lg"
+                                    style="padding-left: 2.5rem; padding-right: 2.5rem;background-color: #d16c1a;color: aliceblue;">
+                                    {{signUpMood ? 'SignUp' : 'LogIn'}}
+                                </button>
+                                <p class="small fw-bold mt-2 pt-1 mb-0" style="font-size: 16px">
+                                    {{signUpMood ? 'Already have an account?' : 'Don\'t have an account?'}}
+                                    <a (click)="signUpMood=!signUpMood" style="color:#d16c1a;cursor: pointer;">
+                                        {{signUpMood ? 'Log In' : 'Sign Up'}}
+                                    </a>
+                                </p>
+                            </div>
+                            <div *ngIf="isLoading">
+                                <app-spinner></app-spinner>
+                            </div>
+                        </div>
+
+
+
+
+                    </form>
+
+                </div>
+                <div class="col-md-9 col-lg-6 col-xl-5">
+
+                    <!-- <img src="https://storageaccbookimages.blob.core.windows.net/images/female chef.gif"
+                            class="img-fluid" alt="Sample image"> -->
+                    <img src="https://storageaccbookimages.blob.core.windows.net/images/cooking.jpg" class="img-fluid"
+                        alt="Sample image">
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+</div>

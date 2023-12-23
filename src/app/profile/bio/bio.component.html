@@ -1,0 +1,47 @@
+<header>
+    <div *ngIf="!isLoading">
+    <div class="container">
+        <div class="profile">
+
+            <div class="profile-image">
+                
+                    <img [src]="bioData.profilePicture" alt="">
+            </div>
+
+            <div class="profile-user-settings">
+
+                <h1 class="profile-user-name">{{bioData.username}}</h1>
+
+                <a class="btn profile-edit-btn" *ngIf="isSelfProfile">Edit Profile</a>
+                <a class="btn btn-secondary" *ngIf="!isSelfProfile&&bioData.isFollowing" (click)="unFollow()">unFollow</a>
+                <a class="btn btn-primary" *ngIf="!isSelfProfile&&!bioData.isFollowing"(click)="follow()">Follow</a>
+
+				<!--<button class="btn profile-settings-btn" aria-label="profile settings"><i class="fas fa-cog" aria-hidden="true"></i></button> -->
+
+            </div>
+            <div class="profile-bio">
+
+                <span class="profile-real-name">{{bioData.fullName}}</span>
+                <p>{{bioData.description}}</p>
+
+            </div>
+            <div class="profile-stats">
+
+                <ul>
+                    <li><span class="profile-stat-count">{{bioData.postsCount}}</span> posts</li>
+                    <li><span class="profile-stat-count">{{bioData.followersCount}}</span> followers</li>
+                    <li><span class="profile-stat-count">{{bioData.followingCount}}</span> following</li>
+                </ul>
+
+            </div>
+
+
+
+        </div>
+
+        <!-- End of profile section -->
+
+    </div>
+    <!-- End of container -->
+    </div>
+</header>
