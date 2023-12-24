@@ -4,6 +4,7 @@ import { AuthService } from '../../auth/auth.service';
 import { Subscription } from "rxjs";
 import { HttpClient } from "@angular/common/http";
 import { BioData } from "./bio.model";
+import { BasicUserData } from "src/app/Shared/BasicUserData.model";
 @Injectable({ providedIn: 'root' })
 
 export class BioService {
@@ -26,7 +27,16 @@ export class BioService {
         const url = `https://localhost:7216/api/Users/Unfollow?currentUserId=${currentUserId}&followerId=${userId}`;
         return this.http.delete<boolean>(url);
     }
-    
+    getFollowing(currentUserId: string,userId: string){
+        const url = `https://localhost:7216/api/Users/GetFollowing/${userId}?currentId=${currentUserId}`;
+        return this.http.get<BasicUserData[]>(url);
+
+    }
+    getFollowers(currentUserId: string,userId: string){
+        const url = `https://localhost:7216/api/Users/GetFollowers/${userId}?currentId=${currentUserId}`;
+        return this.http.get<BasicUserData[]>(url);
+
+    }
 
 }
 

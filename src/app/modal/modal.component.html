@@ -1,0 +1,34 @@
+<div class="modal-header">
+  <h4 class="modal-title">{{title}}</h4>
+  <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')" style="background-color:whitesmoke;border-color: whitesmoke;">
+    <span aria-hidden="true"><i class="fa-solid fa-xmark"></i></span>
+  </button>
+</div>
+
+  
+<div class="modal-body scrollable-modal-body">
+    <ul class="list-group list-group-flush">
+        <li class="list-group-item d-flex justify-content-between" *ngFor="let user of users">
+            <div class="d-flex">
+              <div>
+                  <img [src]="users[0].profilePicture">
+              </div>
+              <div class="ms-2 d-flex flex-column align-self-center" >
+                  <span>{{user.userName}}</span>
+                  <span> {{user.fullName}}</span>
+      
+              </div>
+            </div>
+            <div class="align-self-center" *ngIf="currentId!=user.userID">
+              <a class="btn btn-primary " *ngIf="user.isFollowing" style="border-color:  rgb(133, 36, 36);color:  rgb(133, 36, 36); background-color: whitesmoke;cursor: pointer;"(click)="unFollow(currentId,user.userID)">unfollow</a>
+              <a class="btn btn-primary " *ngIf="!user.isFollowing" style="border-color:  rgb(133, 36, 36);background-color:  rgb(133, 36, 36); color: whitesmoke;"(click)="Follow(currentId,user.userID)">follow</a>
+      
+            </div>
+      
+          </li>
+   
+  </ul>
+</div>
+<div class="modal-footer">
+  <button type="button" class="btn btn-outline-dark" (click)="activeModal.close('Close click')">Close</button>
+</div>

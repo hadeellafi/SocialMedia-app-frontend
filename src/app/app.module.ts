@@ -12,6 +12,7 @@ import { HeaderComponent } from './header/header.component';
 import { BioComponent } from './profile/bio/bio.component';
 import { ProfileComponent } from './profile/profile.component';
 import { PostListComponent } from './profile/post-list/post-list.component';
+import { ModalComponent } from './modal/modal.component';
 
 
 
@@ -24,6 +25,7 @@ import { PostListComponent } from './profile/post-list/post-list.component';
     ProfileComponent,
     BioComponent,
     PostListComponent,
+    ModalComponent
 
   ],
   imports: [

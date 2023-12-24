@@ -4,6 +4,7 @@ import { AuthService } from '../../auth/auth.service';
 import { HttpClient } from '@angular/common/http';
 import { Subscription } from 'rxjs';
 import { BioData } from './bio.model';
+import { ModalService } from 'src/app/modal/modal.service';
 
 @Component({
   selector: 'app-bio',
@@ -11,13 +12,13 @@ import { BioData } from './bio.model';
   styleUrls: ['./bio.component.css']
 })
 export class BioComponent implements OnInit {
-  currentUserId: string = '3';
-  userId: string = '9badc200-6c82-452b-954c-30a2fea33e62';
+  currentUserId: string = '9badc200-6c82-452b-954c-30a2fea33e62';
+  userId: string = '1';
   isSelfProfile: boolean = false;
   subscribtion!: Subscription;
   bioData!: BioData;
   isLoading: boolean = true;
-  constructor(private authService: AuthService, private http: HttpClient, private bioService: BioService) { }
+  constructor(private authService: AuthService, private http: HttpClient, private bioService: BioService,private modalService: ModalService) { }
   ngOnInit() {
 
     this.isSelfProfile = this.currentUserId == this.userId ? true : false;
@@ -36,6 +37,16 @@ export class BioComponent implements OnInit {
   unFollow() {
     this.bioService.unFollow(this.currentUserId, this.userId).subscribe(resData => {
       this.bioData.isFollowing = !resData;
+    })
+  }
+  getFollowing() {
+    this.bioService.getFollowing(this.currentUserId,this.userId).subscribe(result => {
+      this.modalService.openUserModal(this.currentUserId,result, "Following");
+    })
+  }
+  getFollowers() {
+    this.bioService.getFollowers(this.currentUserId,this.userId).subscribe(result => {
+      this.modalService.openUserModal(this.currentUserId,result, "Followers");
     })
   }
 }
