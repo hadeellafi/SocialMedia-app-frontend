@@ -13,6 +13,8 @@ import { BioComponent } from './profile/bio/bio.component';
 import { ProfileComponent } from './profile/profile.component';
 import { PostListComponent } from './profile/post-list/post-list.component';
 import { ModalComponent } from './modal/modal.component';
+import { BioEditComponent } from './profile/bio/bio-edit/bio-edit.component';
+import { PizzaSpinnerComponent } from './Shared/pizza-spinner/pizza-spinner.component';
 
 
 
@@ -25,7 +27,9 @@ import { ModalComponent } from './modal/modal.component';
     ProfileComponent,
     BioComponent,
     PostListComponent,
-    ModalComponent
+    ModalComponent,
+    BioEditComponent,
+    PizzaSpinnerComponent
 
   ],
   imports: [

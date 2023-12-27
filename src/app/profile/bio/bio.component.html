@@ -11,7 +11,7 @@
 
                 <h1 class="profile-user-name">{{bioData.username}}</h1>
 
-                <a class="btn profile-edit-btn" *ngIf="isSelfProfile">Edit Profile</a>
+                <a class="btn profile-edit-btn" *ngIf="isSelfProfile" routerLink="/profile/{{bioData.id}}/edit">Edit Profile</a>
                 <a class="btn profile-edit-btn" style="border-color:  rgb(133, 36, 36);color:  rgb(133, 36, 36);"
                     *ngIf="!isSelfProfile&&bioData.isFollowing" (click)="unFollow()">unfollow</a>
                 <a class="btn profile-edit-btn" style="background-color:  rgb(133, 36, 36);color: antiquewhite;"

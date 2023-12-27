@@ -3,12 +3,15 @@ import { RouterModule, Routes } from "@angular/router";
 import { AuthComponent } from "./auth/auth.component";
 import { AppComponent } from "./app.component";
 import { ProfileComponent } from "./profile/profile.component";
+import { BioEditComponent } from "./profile/bio/bio-edit/bio-edit.component";
 
 const appRoutes: Routes = [
     {path:"",component:AppComponent,pathMatch:'full'},
-    {path:"profile/{id}",component:ProfileComponent}
+    {path:"auth",component:AuthComponent},
+    {path:"profile/:id",component:ProfileComponent},
+    {path:"profile/:id/edit",component:BioEditComponent}
+]
 
-     ]
 
 @NgModule({
     imports: [RouterModule.forRoot(appRoutes)],

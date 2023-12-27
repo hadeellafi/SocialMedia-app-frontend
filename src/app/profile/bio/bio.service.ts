@@ -17,26 +17,39 @@ export class BioService {
         const url = `https://localhost:7216/api/Users/ProfileBio?currentUserId=${currentUserId}&userId=${userId}`;
         return this.http.get<BioData>(url);
     }
-    
+
     follow(currentUserId: string, userId: string) {
         const url = `https://localhost:7216/api/Users/Follow?currentUserId=${currentUserId}&followerId=${userId}`;
         return this.http.get<boolean>(url);
     }
-    
+
     unFollow(currentUserId: string, userId: string) {
         const url = `https://localhost:7216/api/Users/Unfollow?currentUserId=${currentUserId}&followerId=${userId}`;
         return this.http.delete<boolean>(url);
     }
-    getFollowing(currentUserId: string,userId: string){
+    getFollowing(currentUserId: string, userId: string) {
         const url = `https://localhost:7216/api/Users/GetFollowing/${userId}?currentId=${currentUserId}`;
         return this.http.get<BasicUserData[]>(url);
 
     }
-    getFollowers(currentUserId: string,userId: string){
+    getFollowers(currentUserId: string, userId: string) {
         const url = `https://localhost:7216/api/Users/GetFollowers/${userId}?currentId=${currentUserId}`;
         return this.http.get<BasicUserData[]>(url);
 
     }
+    updateProfilePicture(userId: string, imageFile: FormData) {
+        const url = `https://localhost:7216/api/Users/UpdateProfilePicture/${userId}`;
+        return this.http.post(url, imageFile, { responseType: 'text' });
+    }
+    removeProfilePicture(userId: string) {
+        const url = `https://localhost:7216/api/Users/RemoveProfilePicture/${userId}`;
+        return this.http.get(url, { responseType: 'text' });
+    }
+    updateProfileBio(userId:string,bio:BioData){
+        const url = `https://localhost:7216/api/Users/UpdateProfileDetail/${userId}`;
+        return this.http.post(url, bio);
+    }
+
 
 }
 

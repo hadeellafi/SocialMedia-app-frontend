@@ -12,7 +12,7 @@ import { ModalService } from 'src/app/modal/modal.service';
   styleUrls: ['./bio.component.css']
 })
 export class BioComponent implements OnInit {
-  currentUserId: string = '9badc200-6c82-452b-954c-30a2fea33e62';
+  currentUserId: string = '1';
   userId: string = '1';
   isSelfProfile: boolean = false;
   subscribtion!: Subscription;
